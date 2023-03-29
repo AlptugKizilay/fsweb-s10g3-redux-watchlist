@@ -26,6 +26,9 @@ function App() {
       setSira(sira - 1);
     }
   }
+  function getInitialFilm() {
+    setSira(0);
+  }
 
   return (
     <div className="wrapper max-w-2xl mx-auto">
@@ -50,27 +53,37 @@ function App() {
         <Route exact path="/">
           <Movie sira={sira} />
 
-          <div className="flex gap-3 justify-end py-3">
-            <button
-              onClick={beforeFilm}
-              className="select-none px-4 py-2 border border-blue-700 text-blue-700 hover:border-blue-500 hover:text-blue-500"
-            >
-              Önceki
-            </button>
-            <button
-              onClick={sonrakiFilm}
-              className="select-none px-4 py-2 border border-blue-700 text-blue-700 hover:border-blue-500 hover:text-blue-500"
-            >
-              Sıradaki
-            </button>
-            <button
-              className="select-none px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white"
-              onClick={() => {
-                dispatch({ type: ADD_FAVORITE, payload: movie });
-              }}
-            >
-              Listeme ekle
-            </button>
+          <div className="flex flex-col gap-1 justify-center py-1">
+            <div className="flex gap-3 justify-center pt-2">
+              <button
+                onClick={beforeFilm}
+                className="select-none px-4 py-2 border border-blue-700 text-blue-700 hover:border-blue-500 hover:text-blue-500"
+              >
+                Önceki
+              </button>
+              <button
+                onClick={sonrakiFilm}
+                className="select-none px-4 py-2 border border-blue-700 text-blue-700 hover:border-blue-500 hover:text-blue-500"
+              >
+                Sıradaki
+              </button>
+              <button
+                onClick={getInitialFilm}
+                className="select-none px-4 py-2 border border-blue-700 text-blue-700 hover:border-blue-500 hover:text-blue-500"
+              >
+                Başa Dön
+              </button>
+            </div>
+            <div className="flex gap-1 justify-center py-2">
+              <button
+                className="select-none px-12 py-2 bg-blue-700 hover:bg-blue-600 text-white"
+                onClick={() => {
+                  dispatch({ type: ADD_FAVORITE, payload: movie });
+                }}
+              >
+                Listeme ekle
+              </button>
+            </div>
           </div>
         </Route>
 

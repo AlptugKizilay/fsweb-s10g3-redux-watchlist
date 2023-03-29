@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { legacy_createStore as createStore } from "redux";
+import { applyMiddleware, legacy_createStore as createStore } from "redux";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
@@ -8,9 +8,9 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import reducers from "./reducers";
-import reducer from "./reducers/movieReducer";
+import logger from 'redux-logger';
 
-const store = createStore(reducers);
+const store = createStore(reducers,applyMiddleware(logger));
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
